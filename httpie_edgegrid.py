@@ -32,7 +32,7 @@ class EdgeGridPlugin(AuthPlugin):
     description = ''
  
     def get_auth(self, username, password):
-        rc_path = os.path.expanduser("~/.edgerc")
+        rc_path = os.path.expanduser(os.environ['EDGERC_LOCATION'] || "~/.edgerc")
         rc = EdgeRc(rc_path)
  
         if not rc.has_section(username):
